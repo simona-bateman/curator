@@ -18,12 +18,20 @@ pipeline:
           execution:
             steps:
               - step:
-                  identifier: echo
-                  name: echo
+                  identifier: gradlecall
+                  name: gradlecall
                   spec:
-                    command: echo hello world
+                    command: ./gradlew clean build
                   timeout: ""
                   type: Run
+              - step:
+                  type: Run
+                  name: test
+                  identifier: test
+                  spec:
+                    shell: Bash
+                    command: ./gradlew test
+                  description: running all tests
           platform:
             arch: Amd64
             os: Linux
