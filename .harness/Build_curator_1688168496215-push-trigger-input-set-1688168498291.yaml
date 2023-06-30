@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_curator_1688168496215-push-trigger-input-set
+  identifier: Build_curator_1688168496215pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: Apache_Curator
+  pipeline:
+    identifier: Build_curator_1688168496215
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
