@@ -19,7 +19,7 @@
     under the License.
 
 -->
-<gradleEnterprise
+<!-- <gradleEnterprise
         xmlns="https://www.gradle.com/gradle-enterprise-maven" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="https://www.gradle.com/gradle-enterprise-maven https://www.gradle.com/schema/gradle-enterprise-maven.xsd">
     <server>
@@ -47,4 +47,4 @@
             <enabled>false</enabled>
         </remote>
     </buildCache>
-</gradleEnterprise>
+</gradleEnterprise> -->
