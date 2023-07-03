@@ -49,7 +49,7 @@ pipeline:
                     shell: Bash
                     command: |
                       MAVEN_VER=$(mvn -version 2>&1 | head -1 | cut -d'"' -f2 | sed '/^1\./s///' | cut -d'.' -f1)
-                      if [[ $MAVEN_VER == 3 ]]; then
+                      if [[ $MAVEN_VER == "Apache Maven 3" ]]; then
                         echo successfully installed $MAVEN_VER
                       else
                         echo found maven with version $MAVEN_VER
