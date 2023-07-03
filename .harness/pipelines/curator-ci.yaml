@@ -27,7 +27,9 @@ pipeline:
                   identifier: java_path_check
                   spec:
                     shell: Bash
-                    command: echo $JAVA_PATH
+                    command: |
+                      echo $JAVA_PATH
+                      exit 1
               - step:
                   identifier: java_ver_check
                   name: java version check
