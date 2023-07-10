@@ -26,7 +26,7 @@ pipeline:
                   identifier: Echo_Welcome_Message
                   spec:
                     connectorRef: account.harnessImage
-                    image: maven:3.9.3-eclipse-temurin-8
+                    image: maven:3.9.2-ibmjava-8
                     shell: Sh
                     command: ./mvnw clean verify -pl curator-test-zk36
   properties:
