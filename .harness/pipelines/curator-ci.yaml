@@ -28,7 +28,7 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: maven:3.9.2-ibmjava-8
                     shell: Sh
-                    command: ls -la /harness/.m2/repository
+                    command: ls -la /harness/.m2
   properties:
     ci:
       codebase:
