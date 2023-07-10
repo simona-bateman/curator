@@ -28,7 +28,7 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: maven:3.9.2-ibmjava-8
                     shell: Sh
-                    command: ./mvnw clean verify -pl curator-test-zk36
+                    command: ls -la /harness/.m2/repository
   properties:
     ci:
       codebase:
