@@ -10,68 +10,25 @@ pipeline:
         type: CI
         spec:
           cloneCodebase: true
-          execution:
-            steps:
-              - step:
-                  type: Action
-                  name: Install Java 8
-                  identifier: install_java
-                  spec:
-                    uses: actions/setup-java@v3
-                    with:
-                      distribution: temurin
-                      java-version: "8"
-              - step:
-                  type: Run
-                  name: verify java path
-                  identifier: java_path_check
-                  spec:
-                    shell: Bash
-                    command: |
-                      echo $JAVA_PATH
-                      exit 1
-              - step:
-                  identifier: java_ver_check
-                  name: java version check
-                  type: Run
-                  spec:
-                    shell: Bash
-                    command: |
-                      JAVA_VER=$(java -version 2>&1 | head -1 | cut -d'"' -f2 | sed '/^1\./s///' | cut -d'.' -f1)
-                      if [[ $JAVA_VER == 8 ]]; then
-                        echo successfully installed $JAVA_VER
-                      else
-                        exit 1
-                      fi
-              - step:
-                  identifier: maven_ver_check
-                  name: maven version check
-                  type: Run
-                  spec:
-                    shell: Bash
-                    command: |
-                      MAVEN_VER=$(mvn -version 2>&1 | head -1 | cut -d'"' -f2 | sed '/^1\./s///' | cut -d'.' -f1)
-                      if [[ $MAVEN_VER == "Apache Maven 3" ]]; then
-                        echo successfully installed $MAVEN_VER
-                      else
-                        echo found maven with version $MAVEN_VER
-                        exit 1
-                      fi
-              - step:
-                  type: Run
-                  name: Echo Welcome Message
-                  identifier: Echo_Welcome_Message
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: alpine
-                    shell: Sh
-                    command: ./mvnw clean verify -pl curator-test-zk36
+          caching:
+            enabled: true
           platform:
             os: Linux
             arch: Amd64
           runtime:
             type: Cloud
             spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Echo Welcome Message
+                  identifier: Echo_Welcome_Message
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: maven:3.9.3-eclipse-temurin-8
+                    shell: Sh
+                    command: ./mvnw clean verify -pl curator-test-zk36
   properties:
     ci:
       codebase:
